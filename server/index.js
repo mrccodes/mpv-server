@@ -11,9 +11,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 const port = 3000;
 
-app.get('/api/games', (res, req) => {
+app.get('/api/scoreboard/:gameId/:holeNumber', (res, req) => {
   console.log('checking database for games')
-  console.log(req)
+  console.log(req.params.gameId, req.params.holeNumber)
+  res.send('request recieved.')
 })
 
 app.post('/api/games', async (req, res) => {
@@ -21,7 +22,6 @@ app.post('/api/games', async (req, res) => {
   console.log(req.body);
   let response = await createNewGame(req.body.numberOfHoles, req.body.players)
   res.send(response)
-
 })
 
 app
