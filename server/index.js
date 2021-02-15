@@ -16,11 +16,12 @@ app.get('/api/games', (res, req) => {
   console.log(req)
 })
 
-app.post('/api/games', (req, res) => {
+app.post('/api/games', async (req, res) => {
   console.log('posting new game to database')
   console.log(req.body);
-  res.send()
-  createNewGame(req.body.numberOfHoles, req.body.players)
+  let response = await createNewGame(req.body.numberOfHoles, req.body.players)
+  res.send(response)
+
 })
 
 app

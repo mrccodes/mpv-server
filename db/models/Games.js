@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = require('mongoose');
 const db = require('../index.js');
 
 const gameSchema = mongoose.Schema({
-  holes: {}
+  holes: Object
 })
 
 const Game = mongoose.model("Game", gameSchema);

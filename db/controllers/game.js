@@ -5,45 +5,53 @@ const createNewGame = (numOfHoles, players) => {
   for (const key of players) {
     playersObj[key] = 0
   }
-
+  var newGame;
+  console.log(playersObj)
+  console.log(numOfHoles)
   if (numOfHoles === 9) {
-    const newGame = {
-      1: playersObj,
-      2: playersObj,
-      3: playersObj,
-      4: playersObj,
-      5: playersObj,
-      6: playersObj,
-      7: playersObj,
-      8: playersObj,
-      9: playersObj
-    }
+     newGame = {
+      holes: {
+        one: playersObj,
+        two: playersObj,
+        three: playersObj,
+        four: playersObj,
+        five: playersObj,
+        six: playersObj,
+        seven: playersObj,
+        eight: playersObj,
+        nine: playersObj
+      }
 
-  } else {
-    const newGame = {
-      1: playersObj,
-      2: playersObj,
-      3: playersObj,
-      4: playersObj,
-      5: playersObj,
-      6: playersObj,
-      7: playersObj,
-      8: playersObj,
-      8: playersObj,
-      10: playersObj,
-      11: playersObj,
-      12: playersObj,
-      13: playersObj,
-      14: playersObj,
-      15: playersObj,
-      16: playersObj,
-      17: playersObj,
-      18: playersObj
     }
+    console.log(newGame)
+  } else {
+     newGame = {
+      holes: {
+        one: playersObj,
+        two: playersObj,
+        three: playersObj,
+        four: playersObj,
+        five: playersObj,
+        six: playersObj,
+        seven: playersObj,
+        eight: playersObj,
+        nine: playersObj,
+        ten: playersObj,
+        eleven: playersObj,
+        twelve: playersObj,
+        thirteen: playersObj,
+        fourteen: playersObj,
+        fifteen: playersObj,
+        sixteen: playersObj,
+        seventeen: playersObj,
+        eighteen: playersObj
+      }
+    }
+  }
 
     const addGame = new Game(newGame);
     return addGame.save()
-  }
+
 }
 
   module.exports = createNewGame;
