@@ -44,5 +44,6 @@ const createNewGame = (numOfHoles, players) => {
     const addGame = new Game(newGame);
     return addGame.save()
   }
+}
 
   module.exports = createNewGame;
