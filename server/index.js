@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const createNewGame = require('../db/controllers/game.js');
-const getScoreBoard = require('../db/controllers/scoreboard.js');
-const updateScoreboard = require('../db/controllers/scoreboard.js');
+const {getScoreBoard} = require('../db/controllers/scoreboard.js');
+const {updateScoreboard} = require('../db/controllers/scoreboard.js');
 const bodyParser = require('body-parser')
 
 app.use(cors())
