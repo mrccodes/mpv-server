@@ -32,7 +32,7 @@ const updateScoreboard = async (game, hole, scoreBoard) => {
   }
 
   currentGame[0].holes[numToWord[hole]] = updatedScore;
-  console.log('updated scoreboard', currentGame.holes.one)
+  console.log('updated scoreboard', currentGame[0].holes.one)
   return updatedScore;
 }
 
