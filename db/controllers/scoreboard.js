@@ -25,8 +25,10 @@ const updateScoreboard = async (game, hole, scoreBoard) => {
   const currentGame = await Game.find({_id: game});
   console.log(game, hole, scoreBoard);
   let updatedScore = {}
-  for (const player of scoreBoard[0]) {
-    updatedScore[player.name] = player.score;
+  for (const player in scoreBoard) {
+    let name = scoreBoard[player].name;
+    let score = scoreBoard[player].score
+    updatedScore[name] = score
   }
   return updatedScore;
 }
