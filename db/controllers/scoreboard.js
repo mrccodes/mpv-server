@@ -21,6 +21,11 @@ const numToWord = {
   18: 'eighteen'
 }
 
+const updateScoreboard = async (game, hole, scoreBoard) => {
+  const currentGame = await Game.find({_id: game});
+  console.log(currentGame[0])
+}
+
 const getScoreBoard = async (game, hole) => {
   const currentGame = await Game.find({_id: game})
   console.log(game)
