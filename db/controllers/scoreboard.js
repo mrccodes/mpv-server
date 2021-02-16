@@ -34,4 +34,4 @@ const getScoreBoard = async (game, hole) => {
   return currentGame[0].holes[numToWord[hole]]
 }
 
-module.exports = {getScoreBoard, updateScoreboard};
+module.exports = {getScoreBoard: getScoreBoard, updateScoreboard: updateScoreboard};
