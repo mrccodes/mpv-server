@@ -24,7 +24,11 @@ const numToWord = {
 const updateScoreboard = async (game, hole, scoreBoard) => {
   const currentGame = await Game.find({_id: game});
   console.log(game, hole, scoreBoard);
-  return 'done'
+  let updatedScore = {}
+  for (const player of scoreBoard[0]) {
+    updatedScore[player.name] = player.score;
+  }
+  return updatedScore;
 }
 
 const getScoreBoard = async (game, hole) => {

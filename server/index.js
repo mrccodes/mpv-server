@@ -15,11 +15,12 @@ const port = 3000;
 
 app.post('/api/scoreboard/:gameId/:holeNumber', async (req, res) => {
   const hole = req.params.holeNumber;
-  const gameId = req.params.gameid;
+  const gameId = req.params.gameId;
   console.log(`updating scores for hole ${hole}`)
   updateScoreboard(gameId, hole, req.body)
   .then((data) => {
     console.log(data)
+
   })
 
 })
