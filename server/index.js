@@ -22,6 +22,9 @@ app.post('/api/scoreboard/:gameId/:holeNumber', async (req, res) => {
     console.log(data)
 
   })
+  .catch((err) => {
+    console.log(err)
+  })
 
 })
 

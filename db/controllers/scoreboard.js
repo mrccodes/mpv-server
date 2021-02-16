@@ -32,6 +32,7 @@ const updateScoreboard = async (game, hole, scoreBoard) => {
   }
 
   currentGame.holes[numToWord[hole]] = updatedScore;
+  currentGame.markModified('holes')
   return currentGame.save();
 }
 
