@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const createNewGame = require('../db/controllers/game.js')
+const createNewGame = require('../db/controllers/game.js');
+const getScoreBoard = require('../db/controllers/scoreboard.js');
 const bodyParser = require('body-parser')
 
 app.use(cors())
@@ -11,10 +12,15 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 const port = 3000;
 
-app.get('/api/scoreboard/:gameId/:holeNumber', (res, req) => {
+app.get('/api/scoreboard/:gameId/:holeNumber', async (req, res) => {
   console.log('checking database for games')
-  console.log(req.params.gameId, req.params.holeNumber)
-  res.send('request recieved.')
+  const hole = req.params.holeNumber;
+  const gameId = req.params.gameId
+  getScoreBoard(gameId, hole)
+    .then((sb) => {
+      res.send(sb)
+    })
+
 })
 
 app.post('/api/games', async (req, res) => {
