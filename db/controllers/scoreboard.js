@@ -33,14 +33,14 @@ const updateScoreboard = async (game, hole, scoreBoard) => {
 
   currentGame[0].holes[numToWord[hole]] = updatedScore;
   console.log('updated scoreboard', currentGame[0].holes.one)
-  return updatedScore;
+  return currentGame.save();
 }
 
 const getScoreBoard = async (game, hole) => {
   const currentGame = await Game.find({_id: game})
-
-  return currentGame.save();
-
+  console.log(game)
+  console.log(currentGame[0])
+  return currentGame[0].holes[numToWord[hole]]
 }
 
 module.exports = {getScoreBoard: getScoreBoard, updateScoreboard: updateScoreboard};
