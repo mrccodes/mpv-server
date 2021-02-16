@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const createNewGame = require('../db/controllers/game.js');
+const findGames = require('../db/controllers/game.js');
 const {getScoreBoard} = require('../db/controllers/scoreboard.js');
 const {updateScoreboard} = require('../db/controllers/scoreboard.js');
 const bodyParser = require('body-parser')
@@ -37,6 +38,13 @@ app.get('/api/scoreboard/:gameId/:holeNumber', async (req, res) => {
       res.send(sb)
     })
 
+})
+
+app.get('/api/games', async (req, res) => {
+  findGames()
+    .then((games) => {
+      res.send(games);
+    })
 })
 
 app.post('/api/games', async (req, res) => {
