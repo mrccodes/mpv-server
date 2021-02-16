@@ -5,6 +5,6 @@ const findGames = async () => {
   return games;
 }
 
-export default findGames;
+module.exports = {findGames} ;
 
 
