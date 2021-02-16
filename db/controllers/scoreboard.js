@@ -23,7 +23,8 @@ const numToWord = {
 
 const updateScoreboard = async (game, hole, scoreBoard) => {
   const currentGame = await Game.find({_id: game});
-  console.log(currentGame[0])
+  console.log(game, hole, scoreBoard);
+  return 'done'
 }
 
 const getScoreBoard = async (game, hole) => {
@@ -33,4 +34,4 @@ const getScoreBoard = async (game, hole) => {
   return currentGame[0].holes[numToWord[hole]]
 }
 
-module.exports = getScoreBoard;
+module.exports = {getScoreBoard, updateScoreboard};
