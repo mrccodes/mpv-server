@@ -5,7 +5,8 @@ const createNewGame = require('../db/controllers/game.js');
 const findGames = require('../db/controllers/findGames.js');
 const {getScoreBoard} = require('../db/controllers/scoreboard.js');
 const {updateScoreboard} = require('../db/controllers/scoreboard.js');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const {updateWinner} = require ('../db/controllers/scoreboard.js')
 
 app.use(cors())
 app.use(bodyParser.json());
@@ -24,6 +25,7 @@ app.post('/api/scoreboard/:gameId/:holeNumber', async (req, res) => {
   })
   .catch((err) => {
     console.log(err)
+    res.status(500).end()
   })
 
 })
@@ -36,7 +38,25 @@ app.get('/api/scoreboard/:gameId/:holeNumber', async (req, res) => {
     .then((sb) => {
       res.send(sb)
     })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).end()
+    })
 
+})
+
+app.post('/api/winner/:gameId/:winner', async (req, res) => {
+  const game = req.params.gameId;
+  const winner = req.params.winner;
+
+  updateWinner(game, winner)
+    .then((data) => {
+      res.send()
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).end()
+    })
 })
 
 app.get('/api/games', async (req, res) => {
@@ -44,13 +64,23 @@ app.get('/api/games', async (req, res) => {
     .then((games) => {
       res.send(games);
     })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).end()
+    })
 })
 
 app.post('/api/games', async (req, res) => {
   console.log('posting new game to database')
   console.log(req.body);
-  let response = await createNewGame(req.body.numberOfHoles, req.body.players)
-  res.send(response)
+  createNewGame(req.body.numberOfHoles, req.body.players)
+    .then((data) => {
+      res.send(response)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).end()
+    })
 })
 
 

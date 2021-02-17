@@ -21,6 +21,13 @@ const numToWord = {
   18: 'eighteen'
 }
 
+const updateWinner = async (game, winner) => {
+  const currentGame = await Game.findOne({_id: game});
+  currentGame.winner = winner;
+  currentGame.markModified('winner')
+  return currentGame.save();
+}
+
 const updateScoreboard = async (game, hole, scoreBoard) => {
   const currentGame = await Game.findOne({_id: game});
   console.log(game, hole, scoreBoard);
@@ -30,6 +37,8 @@ const updateScoreboard = async (game, hole, scoreBoard) => {
     let score = scoreBoard[player].score
     updatedScore[name] = score
   }
+
+
 
   currentGame.holes[numToWord[hole]] = updatedScore;
   currentGame.markModified('holes')
@@ -43,4 +52,4 @@ const getScoreBoard = async (game, hole) => {
   return currentGame.holes[numToWord[hole]]
 }
 
-module.exports = {getScoreBoard: getScoreBoard, updateScoreboard: updateScoreboard};
+module.exports = {getScoreBoard: getScoreBoard, updateScoreboard: updateScoreboard, updateWinner: updateWinner};
