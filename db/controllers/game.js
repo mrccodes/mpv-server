@@ -20,7 +20,8 @@ const createNewGame = (numOfHoles, players) => {
         seven: playersObj,
         eight: playersObj,
         nine: playersObj
-      }
+      },
+      winner: "Incomplete Game"
 
     }
     console.log(newGame)
@@ -45,7 +46,8 @@ const createNewGame = (numOfHoles, players) => {
         sixteen: playersObj,
         seventeen: playersObj,
         eighteen: playersObj
-      }
+      },
+      winner: "Incomplete Game"
     }
   }
 
