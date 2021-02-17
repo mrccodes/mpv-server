@@ -75,7 +75,7 @@ app.post('/api/games', async (req, res) => {
   console.log(req.body);
   createNewGame(req.body.numberOfHoles, req.body.players)
     .then((data) => {
-      res.send(response)
+      res.send(data)
     })
     .catch((err) => {
       console.log(err)
