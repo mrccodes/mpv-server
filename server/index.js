@@ -20,8 +20,7 @@ app.post('/api/scoreboard/:gameId/:holeNumber', async (req, res) => {
   console.log(`updating scores for hole ${hole}`)
   updateScoreboard(gameId, hole, req.body)
   .then((data) => {
-    console.log(data)
-
+    res.send()
   })
   .catch((err) => {
     console.log(err)
